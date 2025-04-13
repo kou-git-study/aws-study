@@ -36,13 +36,17 @@
 
 ## curlテストスクリプト例
 
-```bash
-curl -X POST http://<EC2-Public-IP>/soap -H "Content-Type: text/xml" -d '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+# S3用（API Gateway経由）
+curl https://<your-api-id>.execute-api.<region>.amazonaws.com/default/sample.txt
+
+# SOAP用（EC2のIPを指定）
+curl -X POST http://<EC2-Public-IP>/soap \
+-H "Content-Type: text/xml" \
+-d '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
       <soapenv:Body>
-        <test>Hello from On-prem</test>
+        <test>Hello</test>
       </soapenv:Body>
     </soapenv:Envelope>'
-```
 
 ---
 
