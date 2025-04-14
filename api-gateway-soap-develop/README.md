@@ -3,12 +3,12 @@
 
 ## 概要
 
-このリポジトリは、AWSのAPI GatewayとS3、EC2環境を利用した構成設計および構築の実践プロジェクトです。
+このリポジトリは、AWSの **API Gateway → S3連携** と、**SOAP通信風のEC2構成** を実装したプロジェクトです。
 
-- AWSサービスの選定（API Gateway, S3, EC2,IAM など）
+- AWSサービスの選定（API Gateway,Lambda,S3, EC2,IAM など）
 - ネットワーク設計（セキュリティグループ、ルートテーブル、NACL）
 - アクセス検証（curl による通信テスト）
-まで、**基本設計～詳細設計レベルの内容を個人で行いました。**
+**基本設計～詳細設計レベル**まで、自身で構成・構築・動作確認まで一貫して行いました。
 
 今後、Lambdaを入れた構成やTerraformなどのIaC化を入れて、さらに設計力を高めていく予定です。
 
@@ -16,11 +16,12 @@
 
 ## 使用AWSサービス
 
-- VPC / サブネット / ルートテーブル / NACL
-- EC2 (FlaskでSOAP通信風のエンドポイント)
-- API Gateway (HTTP API)
-- S3 (GETオブジェクトアクセス)
-- IAM（API Gateway用ロール）
+- VPC / サブネット / ルートテーブル / NACL / IGW
+- EC2（FlaskによるSOAP風エンドポイント）
+- API Gateway（HTTP API）
+- Lambda（S3からファイルを取し、バイナリで返却）
+- S3（GETオブジェクト用）
+- IAM（API GatewayからS3アクセス用のロール）
 
 ---
 
@@ -28,10 +29,17 @@
 
 ```
 .
+api-gateway-soap-develop/
 ├── README.md
-├── curl_example.sh
-```
-
+├── apigw-to-s3/
+│   ├── lambda/
+│   │   └── download_file.py
+│   ├── terraform/
+│   │   └── apigateway_s3.tf（これから追加予定）
+│   └── screenshots/
+│       └── test_result.png（curlテストなど）
+└── soap-communication/
+    └── （これから追加予定）
 ---
 
 ## curlテストスクリプト例
