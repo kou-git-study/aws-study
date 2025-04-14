@@ -42,7 +42,7 @@ api-gateway-soap-develop/
     └── （これから追加予定）
 ---
 
-## curlテストスクリプト例
+## 🔗 curlテスト例
 
 S3用（API Gateway経由）
 curl https://<your-api-id>.execute-api.<region>.amazonaws.com/default/sample.txt
