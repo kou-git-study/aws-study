@@ -7,6 +7,6 @@
 
 ## 使用技術
 - AWS API Gateway
-- AWS Lambda / S3 / EC2
+- AWS Lambda / S3 / EC2 / VPC / IAM
 - Python / Flask
 - Terraform（予定）
